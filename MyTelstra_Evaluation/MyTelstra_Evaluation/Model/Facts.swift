@@ -10,10 +10,10 @@ import Foundation
 
 struct Facts: Decodable {
     let title: String?
-    let rows: [factContent]?
+    let rows: [FactContent]?
 }
 
-struct factContent: Decodable {
+struct FactContent: Decodable {
     let title: String?
     let description: String?
     let imageHref: String?

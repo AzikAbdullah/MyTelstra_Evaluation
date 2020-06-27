@@ -8,7 +8,20 @@
 
 import UIKit
 
-class infoCell: UITableViewCell {
+class InfoCell: UITableViewCell {
+    
+    var factContent:FactContent? {
+        didSet {
+            guard let contentItem = factContent else {return}
+            if let titleText = contentItem.title {
+                titleLabel.text = titleText
+            }
+            if let descriptionText = contentItem.description {
+                descriptionLabel.text = "\(descriptionText)"
+                descriptionLabel.sizeToFit()
+            }
+        }
+    }
         
     let detailsImageView:UIImageView = {
         let img = UIImageView()

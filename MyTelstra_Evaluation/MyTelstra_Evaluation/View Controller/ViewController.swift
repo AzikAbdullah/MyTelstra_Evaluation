@@ -8,10 +8,12 @@
 
 import UIKit
 
+let kServiceURL = "https://dl.dropboxusercontent.com/s/2iodh4vg0eortkl/facts.json"
+
 class ViewController: UIViewController, UITableViewDataSource, UITableViewDelegate {
 
     let infoTableView = UITableView() // view
-    
+    var facts:Facts?
     override func viewDidLoad() {
         super.viewDidLoad()
         // Do any additional setup after loading the view.
@@ -20,6 +22,7 @@ class ViewController: UIViewController, UITableViewDataSource, UITableViewDelega
         view.addSubview(infoTableView)
         
         setupTableView()
+        callService()
     }
 
     func setupTableView() {
@@ -32,24 +35,41 @@ class ViewController: UIViewController, UITableViewDataSource, UITableViewDelega
         
         infoTableView.dataSource = self
         infoTableView.delegate = self
+        
+        infoTableView.register(InfoCell.self, forCellReuseIdentifier: "contentCell")
+    }
+    
+    func callService() {
+        NetworkManager().fetchJsonData(kServiceURL, completionHandler: { (responseData,error) in
+            if let responseData = responseData {
+                self.facts = responseData
+                DispatchQueue.main.async {
+                    self.navigationItem.title = self.facts?.title ?? ""
+                    self.infoTableView.reloadData()
+                }
+            }
+        })
     }
 }
 
 extension ViewController {
     func tableView(_ tableView: UITableView, numberOfRowsInSection section: Int) -> Int {
-        return 0
+        return facts?.rows?.count ?? 0
     }
     
     func tableView(_ tableView: UITableView, cellForRowAt indexPath: IndexPath) -> UITableViewCell {
-        let cell = UITableViewCell()
+        let cell = tableView.dequeueReusableCell(withIdentifier: "contentCell", for: indexPath) as! InfoCell
+        cell.factContent = facts?.rows?[indexPath.row]
 
         return cell
     }
     
     func tableView(_ tableView: UITableView, heightForRowAt indexPath: IndexPath) -> CGFloat {
         let font: UIFont = UIFont.boldSystemFont(ofSize: 14)
-
-        let labelHeight = heightForView(text: "", font: font, width: self.view.frame.size.width - 100)
+        var labelHeight:CGFloat = 0.0
+        if let cellFact:FactContent = facts?.rows?[indexPath.row] {
+            labelHeight = heightForView(text: cellFact.description ?? "", font: font, width: self.view.frame.size.width - 100)
+        }
         let rowHeight = labelHeight + 50
         return rowHeight > 100 ? rowHeight : 100 //
     }
