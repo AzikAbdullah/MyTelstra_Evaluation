@@ -14,6 +14,7 @@ class ViewController: UIViewController, UITableViewDataSource, UITableViewDelega
 
     let infoTableView = UITableView() // view
     var facts:Facts?
+    var refreshControl = UIRefreshControl()
     override func viewDidLoad() {
         super.viewDidLoad()
         // Do any additional setup after loading the view.
@@ -37,15 +38,22 @@ class ViewController: UIViewController, UITableViewDataSource, UITableViewDelega
         infoTableView.delegate = self
         
         infoTableView.register(InfoCell.self, forCellReuseIdentifier: "contentCell")
+        
+        refreshControl.attributedTitle = NSAttributedString(string: "Pull to refresh")
+        refreshControl.addTarget(self, action: #selector(callService), for: .valueChanged)
+        infoTableView.addSubview(refreshControl)
     }
     
-    func callService() {
+    @objc func callService() {
         NetworkManager().fetchJsonData(kServiceURL, completionHandler: { (responseData,error) in
             if let responseData = responseData {
                 self.facts = responseData
                 DispatchQueue.main.async {
                     self.navigationItem.title = self.facts?.title ?? ""
                     self.infoTableView.reloadData()
+                    if self.refreshControl.isRefreshing {
+                        self.refreshControl.endRefreshing()
+                    }
                 }
             }
         })
