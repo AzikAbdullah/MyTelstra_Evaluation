@@ -16,6 +16,7 @@
 		03ADEF2C24A784AF006D8804 /* MyTelstra_EvaluationTests.swift in Sources */ = {isa = PBXBuildFile; fileRef = 03ADEF2B24A784AF006D8804 /* MyTelstra_EvaluationTests.swift */; };
 		03ADEF3724A784AF006D8804 /* MyTelstra_EvaluationUITests.swift in Sources */ = {isa = PBXBuildFile; fileRef = 03ADEF3624A784AF006D8804 /* MyTelstra_EvaluationUITests.swift */; };
 		03ADEF4A24A78806006D8804 /* infoCell.swift in Sources */ = {isa = PBXBuildFile; fileRef = 03ADEF4924A78806006D8804 /* infoCell.swift */; };
+		03ADEF4F24A78AF7006D8804 /* Facts.swift in Sources */ = {isa = PBXBuildFile; fileRef = 03ADEF4E24A78AF7006D8804 /* Facts.swift */; };
 /* End PBXBuildFile section */
 
 /* Begin PBXContainerItemProxy section */
@@ -51,6 +52,7 @@
 		03ADEF3624A784AF006D8804 /* MyTelstra_EvaluationUITests.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = MyTelstra_EvaluationUITests.swift; sourceTree = "<group>"; };
 		03ADEF3824A784AF006D8804 /* Info.plist */ = {isa = PBXFileReference; lastKnownFileType = text.plist.xml; path = Info.plist; sourceTree = "<group>"; };
 		03ADEF4924A78806006D8804 /* infoCell.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = infoCell.swift; sourceTree = "<group>"; };
+		03ADEF4E24A78AF7006D8804 /* Facts.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = Facts.swift; sourceTree = "<group>"; };
 /* End PBXFileReference section */
 
 /* Begin PBXFrameworksBuildPhase section */
@@ -101,6 +103,7 @@
 		03ADEF1324A784AC006D8804 /* MyTelstra_Evaluation */ = {
 			isa = PBXGroup;
 			children = (
+				03ADEF4D24A78AF7006D8804 /* Model */,
 				03ADEF4424A7857A006D8804 /* App Delegate */,
 				03ADEF4824A78806006D8804 /* View */,
 				03ADEF4524A78592006D8804 /* View Controller */,
@@ -153,6 +156,14 @@
 				03ADEF4924A78806006D8804 /* infoCell.swift */,
 			);
 			path = View;
+			sourceTree = "<group>";
+		};
+		03ADEF4D24A78AF7006D8804 /* Model */ = {
+			isa = PBXGroup;
+			children = (
+				03ADEF4E24A78AF7006D8804 /* Facts.swift */,
+			);
+			path = Model;
 			sourceTree = "<group>";
 		};
 /* End PBXGroup section */
@@ -287,6 +298,7 @@
 			buildActionMask = 2147483647;
 			files = (
 				03ADEF1924A784AC006D8804 /* ViewController.swift in Sources */,
+				03ADEF4F24A78AF7006D8804 /* Facts.swift in Sources */,
 				03ADEF1524A784AC006D8804 /* AppDelegate.swift in Sources */,
 				03ADEF1724A784AC006D8804 /* SceneDelegate.swift in Sources */,
 				03ADEF4A24A78806006D8804 /* infoCell.swift in Sources */,
