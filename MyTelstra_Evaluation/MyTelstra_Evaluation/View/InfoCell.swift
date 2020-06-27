@@ -13,12 +13,25 @@ class InfoCell: UITableViewCell {
     var factContent:FactContent? {
         didSet {
             guard let contentItem = factContent else {return}
+            
             if let titleText = contentItem.title {
                 titleLabel.text = titleText
+            } else {
+                titleLabel.text = ""
             }
+            
             if let descriptionText = contentItem.description {
                 descriptionLabel.text = "\(descriptionText)"
                 descriptionLabel.sizeToFit()
+            } else {
+                descriptionLabel.text = ""
+            }
+            
+            detailsImageView.image = UIImage(named: "placeholder")
+            if let imageURL = contentItem.imageHref {
+                detailsImageView.setImageFromURL(urlString: imageURL)
+            } else {
+                detailsImageView.image = UIImage(named: "placeholder")
             }
         }
     }
@@ -123,3 +136,21 @@ class InfoCell: UITableViewCell {
     }
 }
 
+extension UIImageView {
+        
+    func setImageFromURL(urlString: String) {
+        guard let url = URL(string: urlString) else { return }
+        URLSession.shared.dataTask(with: url) { data, response, error in
+            guard
+                let httpURLResponse = response as? HTTPURLResponse, httpURLResponse.statusCode == 200,
+                let mimeType = response?.mimeType, mimeType.hasPrefix("image"),
+                let data = data, error == nil,
+                let image = UIImage(data: data)
+                else { return }
+            DispatchQueue.main.async() { [weak self] in
+                self?.image = image
+            }
+        }.resume()
+    }
+    
+}
