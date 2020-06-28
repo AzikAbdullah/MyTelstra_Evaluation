@@ -30,5 +30,23 @@ class MyTelstra_EvaluationTests: XCTestCase {
             // Put the code you want to measure the time of here.
         }
     }
+    
+    func testCancelServiceCall() {
+        let serviceManager: NetworkManager! = NetworkManager()
+        serviceManager.fetchJsonData(kServiceURL, completionHandler: { (_,_)  in
+            
+        })
+        serviceManager.cancelServiceCall()
+        XCTAssertNil(serviceManager.serviceTask, "Service call Stopped Successfully, returning nil value of service task")
+    }
+    
+    func testEmptyDataParsing() {
+        let parser:ParseManager! = ParseManager()
+        let emptyData = Data()
+        parser.parseResponseData(data: emptyData, error: nil, completionHandler: {(parsedData,error) in
+            XCTAssertNil(parsedData, "Not crashed")
+        })
+    }
+
 
 }

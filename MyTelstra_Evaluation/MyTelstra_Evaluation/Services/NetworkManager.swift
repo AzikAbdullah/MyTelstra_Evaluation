@@ -9,33 +9,27 @@
 import Foundation
 
 class NetworkManager {
+    var serviceTask: URLSessionTask?
+    
     func fetchJsonData(_ urlString: String, completionHandler: @escaping (Facts?, NSError?) -> Void) {
-        
+        cancelServiceCall()
         var request = URLRequest(url: URL(string: urlString)!)
         request.httpMethod = "GET"
         let config = URLSessionConfiguration.default
         let session = URLSession(configuration: config)
         
-        let task = session.dataTask(with: request, completionHandler: { (data, _, error) in
-            guard let data = data else {return}
-            do {
-                if let response = String(data: data, encoding: String.Encoding.ascii),
-                    let utfData = response.data(using: String.Encoding.utf8) {
-                    let parsedFacts:Facts =  try JSONDecoder().decode(Facts.self, from: utfData)
-                    if error == nil {
-                        completionHandler(parsedFacts, nil)
-                    } else {
-                        completionHandler(nil,error as NSError?)
-                    }
-                }
-                else {
-                    completionHandler(nil,error as NSError?)
-                }
-
-            } catch let jsonErr {
-                print("Error serializing json", jsonErr)
-            }
+        serviceTask = session.dataTask(with: request, completionHandler: { (data, _, error) in
+            ParseManager().parseResponseData(data: data, error: error as NSError?, completionHandler: completionHandler)
         })
-        task.resume()
+        serviceTask?.resume()
     }
+    
+    func cancelServiceCall() {
+        if let task = serviceTask {
+            task.cancel()
+        }
+        serviceTask = nil
+    }
+    
+    
 }
