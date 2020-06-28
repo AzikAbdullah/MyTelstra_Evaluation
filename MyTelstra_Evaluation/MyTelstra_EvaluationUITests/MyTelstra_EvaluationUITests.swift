@@ -8,7 +8,7 @@
 
 import XCTest
 
-class MyTelstra_EvaluationUITests: XCTestCase {
+class MyTelstraEvaluationUITests: XCTestCase {
 
     override func setUp() {
         // Put setup code here. This method is called before the invocation of each test method in the class.

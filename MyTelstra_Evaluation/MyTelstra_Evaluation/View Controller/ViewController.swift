@@ -65,9 +65,9 @@ extension ViewController {
     }
     
     func tableView(_ tableView: UITableView, cellForRowAt indexPath: IndexPath) -> UITableViewCell {
-        let cell = tableView.dequeueReusableCell(withIdentifier: "contentCell", for: indexPath) as! InfoCell
-        cell.factContent = facts?.rows?[indexPath.row]//load service data in Tablecells
-        return cell
+        let cell = tableView.dequeueReusableCell(withIdentifier: "contentCell", for: indexPath) as? InfoCell
+        cell?.factContent = facts?.rows?[indexPath.row]
+        return cell ?? InfoCell()
     }
     
     func tableView(_ tableView: UITableView, heightForRowAt indexPath: IndexPath) -> CGFloat {
@@ -80,7 +80,7 @@ extension ViewController {
         return rowHeight > 100 ? rowHeight : 100 //minimum height is 100
     }
 
-    func heightForView(text:String, font:UIFont, width:CGFloat) -> CGFloat{
+    func heightForView(text:String, font:UIFont, width:CGFloat) -> CGFloat {
         let label:UILabel = UILabel(frame: CGRect(x: 0, y: 0, width: width, height: CGFloat.greatestFiniteMagnitude))
         label.numberOfLines = 0
         label.lineBreakMode = NSLineBreakMode.byWordWrapping

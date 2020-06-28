@@ -9,7 +9,7 @@
 import XCTest
 @testable import MyTelstra_Evaluation
 
-class MyTelstra_EvaluationTests: XCTestCase {
+class MyTelstraEvaluationTests: XCTestCase {
 
     override func setUp() {
         // Put setup code here. This method is called before the invocation of each test method in the class.
@@ -43,7 +43,11 @@ class MyTelstra_EvaluationTests: XCTestCase {
     func testEmptyURLServiceCall() {
         let serviceManager: NetworkManager! = NetworkManager()
         serviceManager.fetchJsonData("", completionHandler: { (dataResponse,error)  in
-            XCTAssertNil(dataResponse, "Service call didn't happened and returned nil data")
+            if dataResponse == nil {
+                XCTAssertNil(dataResponse, "Service call didn't happened and returned nil data")
+            } else if error != nil {
+                XCTAssert(false, "Error returned")
+            }
         })
         
     }
@@ -51,14 +55,18 @@ class MyTelstra_EvaluationTests: XCTestCase {
     func testWrongURLServiceCall() {
         let serviceManager: NetworkManager! = NetworkManager()
         serviceManager.fetchJsonData("https://dl.dropboxusercontent.com/s/2iodh4vg0eortkl/fs.json", completionHandler: { (dataResponse,error)  in
-            XCTAssertNil(dataResponse, "Service call happened and returned nil data")
+            if dataResponse == nil {
+                XCTAssertNil(dataResponse, "Service call happened and returned nil data")
+            } else if error != nil {
+                XCTAssert(false, "Error returned")
+            }
         })
         
     }
     
     func testSuccessFullServiceCall() {
         let serviceManager: NetworkManager! = NetworkManager()
-        serviceManager.fetchJsonData(kServiceURL, completionHandler: { (dataResponse,error)  in
+        serviceManager.fetchJsonData(kServiceURL, completionHandler: { (dataResponse,_)  in
             if let factData = dataResponse {
                 XCTAssertEqual(factData.title, "About Canada", "Service call happened and returned correct data")
             }
@@ -68,10 +76,9 @@ class MyTelstra_EvaluationTests: XCTestCase {
     func testEmptyDataParsing() {
         let parser:ParseManager! = ParseManager()
         let emptyData = Data()
-        parser.parseResponseData(data: emptyData, error: nil, completionHandler: {(parsedData,error) in
+        parser.parseResponseData(data: emptyData, error: nil, completionHandler: {(parsedData,_) in
             XCTAssertNil(parsedData, "Not crashed")
         })
     }
-
 
 }

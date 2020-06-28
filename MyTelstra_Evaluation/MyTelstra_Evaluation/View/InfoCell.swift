@@ -28,8 +28,7 @@ class InfoCell: UITableViewCell {
             }
             
             detailsImageView.image = UIImage(named: "placeholder")
-            self.lazyImage.show(imageView: self.detailsImageView, url: contentItem.imageHref ?? "", completion: {//Imagedownload and show
-                (error:LazyImageError?) in
+            self.lazyImage.show(imageView: self.detailsImageView, url: contentItem.imageHref ?? "", completion: { (error:LazyImageError?) in//Imagedownload and show
                 if error != nil {//Any issue in downloading image will show placeholder
                     self.detailsImageView.image = UIImage(named: "placeholder")
                 }

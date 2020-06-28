@@ -20,8 +20,7 @@ class ParseManager {
                 } else {
                     completionHandler(nil,error as NSError?)
                 }
-            }
-            else {
+            } else {
                 completionHandler(nil,error as NSError?)
             }
         } catch let jsonErr {
@@ -29,4 +28,3 @@ class ParseManager {
         }
     }
 }
-

@@ -60,6 +60,7 @@
 		03ADEF5324A78C62006D8804 /* NetworkManager.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = NetworkManager.swift; sourceTree = "<group>"; };
 		03ADEF5A24A79A44006D8804 /* SceneDelegate.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = SceneDelegate.swift; sourceTree = "<group>"; };
 		03C16B2424A8CA4800D66354 /* ParseManager.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = ParseManager.swift; sourceTree = "<group>"; };
+		03C16B2F24A906D200D66354 /* .swiftlint.yml */ = {isa = PBXFileReference; lastKnownFileType = text.yaml; path = .swiftlint.yml; sourceTree = "<group>"; };
 		1272AEF7490360158884976A /* Pods-MyTelstra_EvaluationTests.debug.xcconfig */ = {isa = PBXFileReference; includeInIndex = 1; lastKnownFileType = text.xcconfig; name = "Pods-MyTelstra_EvaluationTests.debug.xcconfig"; path = "Target Support Files/Pods-MyTelstra_EvaluationTests/Pods-MyTelstra_EvaluationTests.debug.xcconfig"; sourceTree = "<group>"; };
 		345E060E1EDF1581CB26336B /* Pods-MyTelstra_EvaluationTests.release.xcconfig */ = {isa = PBXFileReference; includeInIndex = 1; lastKnownFileType = text.xcconfig; name = "Pods-MyTelstra_EvaluationTests.release.xcconfig"; path = "Target Support Files/Pods-MyTelstra_EvaluationTests/Pods-MyTelstra_EvaluationTests.release.xcconfig"; sourceTree = "<group>"; };
 		43ED699643A16E85C0F143DA /* Pods_MyTelstra_EvaluationTests.framework */ = {isa = PBXFileReference; explicitFileType = wrapper.framework; includeInIndex = 0; path = Pods_MyTelstra_EvaluationTests.framework; sourceTree = BUILT_PRODUCTS_DIR; };
@@ -102,6 +103,7 @@
 		03ADEF0824A784AC006D8804 = {
 			isa = PBXGroup;
 			children = (
+				03C16B2F24A906D200D66354 /* .swiftlint.yml */,
 				03ADEF1324A784AC006D8804 /* MyTelstra_Evaluation */,
 				03ADEF2A24A784AF006D8804 /* MyTelstra_EvaluationTests */,
 				03ADEF3524A784AF006D8804 /* MyTelstra_EvaluationUITests */,
@@ -232,6 +234,7 @@
 				03ADEF0E24A784AC006D8804 /* Frameworks */,
 				03ADEF0F24A784AC006D8804 /* Resources */,
 				A90FF313A36F803706B60500 /* [CP] Embed Pods Frameworks */,
+				03C16B2E24A906B400D66354 /* ShellScript */,
 			);
 			buildRules = (
 			);
@@ -352,6 +355,23 @@
 /* End PBXResourcesBuildPhase section */
 
 /* Begin PBXShellScriptBuildPhase section */
+		03C16B2E24A906B400D66354 /* ShellScript */ = {
+			isa = PBXShellScriptBuildPhase;
+			buildActionMask = 2147483647;
+			files = (
+			);
+			inputFileListPaths = (
+			);
+			inputPaths = (
+			);
+			outputFileListPaths = (
+			);
+			outputPaths = (
+			);
+			runOnlyForDeploymentPostprocessing = 0;
+			shellPath = /bin/sh;
+			shellScript = "if which swiftlint >/dev/null; then\n  swiftlint\nelse\n  echo \"warning: SwiftLint not installed, download from https://github.com/realm/SwiftLint\"\nfi\n";
+		};
 		239D4584EF5AED24C480CBD1 /* [CP] Check Pods Manifest.lock */ = {
 			isa = PBXShellScriptBuildPhase;
 			buildActionMask = 2147483647;
