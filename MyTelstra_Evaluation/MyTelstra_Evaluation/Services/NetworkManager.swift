@@ -23,7 +23,7 @@ class NetworkManager {
         let session = URLSession(configuration: config)
         
         serviceTask = session.dataTask(with: request, completionHandler: { (data, _, error) in
-            ParseManager().parseResponseData(data: data, error: error as NSError?, completionHandler: completionHandler)
+            ParseManager().parseResponseData(data: data, error: error as NSError?, completionHandler: completionHandler)//do Parsing
         })
         serviceTask?.resume()
     }
@@ -34,6 +34,5 @@ class NetworkManager {
         }
         serviceTask = nil
     }
-    
     
 }

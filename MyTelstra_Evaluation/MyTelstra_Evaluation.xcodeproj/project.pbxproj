@@ -3,7 +3,7 @@
 	archiveVersion = 1;
 	classes = {
 	};
-	objectVersion = 50;
+	objectVersion = 51;
 	objects = {
 
 /* Begin PBXBuildFile section */
@@ -125,9 +125,9 @@
 			isa = PBXGroup;
 			children = (
 				03ADEF4424A7857A006D8804 /* App Delegate */,
+				03ADEF4D24A78AF7006D8804 /* Model */,
 				03ADEF4824A78806006D8804 /* View */,
 				03ADEF4524A78592006D8804 /* View Controller */,
-				03ADEF4D24A78AF7006D8804 /* Model */,
 				03ADEF5224A78C62006D8804 /* Services */,
 				03ADEF1A24A784AC006D8804 /* Main.storyboard */,
 				03ADEF1D24A784AE006D8804 /* Assets.xcassets */,
@@ -217,7 +217,6 @@
 				1272AEF7490360158884976A /* Pods-MyTelstra_EvaluationTests.debug.xcconfig */,
 				345E060E1EDF1581CB26336B /* Pods-MyTelstra_EvaluationTests.release.xcconfig */,
 			);
-			name = Pods;
 			path = Pods;
 			sourceTree = "<group>";
 		};

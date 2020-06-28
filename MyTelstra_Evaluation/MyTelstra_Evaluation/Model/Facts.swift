@@ -8,7 +8,7 @@
 
 import Foundation
 
-struct Facts: Decodable {
+struct Facts: Decodable {//App Model designed for Service response
     let title: String?
     let rows: [FactContent]?
 }
