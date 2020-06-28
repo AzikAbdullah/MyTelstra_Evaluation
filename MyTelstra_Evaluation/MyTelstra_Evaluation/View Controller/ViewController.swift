@@ -46,7 +46,7 @@ class ViewController: UIViewController, UITableViewDataSource, UITableViewDelega
     
     @objc func callService() {
         NetworkManager().fetchJsonData(kServiceURL, completionHandler: { (responseData,error) in
-            if let responseData = responseData {
+            if let responseData = responseData, error == nil {
                 self.facts = responseData
                 DispatchQueue.main.async {
                     self.navigationItem.title = self.facts?.title ?? ""
@@ -55,6 +55,8 @@ class ViewController: UIViewController, UITableViewDataSource, UITableViewDelega
                         self.refreshControl.endRefreshing()
                     }
                 }
+            } else {
+                print("Service call error")
             }
         })
     }

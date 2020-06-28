@@ -13,7 +13,11 @@ class NetworkManager {
     
     func fetchJsonData(_ urlString: String, completionHandler: @escaping (Facts?, NSError?) -> Void) {
         cancelServiceCall()
-        var request = URLRequest(url: URL(string: urlString)!)
+        guard let servicURL = URL(string: urlString) else {
+            completionHandler(nil,nil)
+            return
+        }
+        var request = URLRequest(url: servicURL)
         request.httpMethod = "GET"
         let config = URLSessionConfiguration.default
         let session = URLSession(configuration: config)

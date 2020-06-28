@@ -40,6 +40,31 @@ class MyTelstra_EvaluationTests: XCTestCase {
         XCTAssertNil(serviceManager.serviceTask, "Service call Stopped Successfully, returning nil value of service task")
     }
     
+    func testEmptyURLServiceCall() {
+        let serviceManager: NetworkManager! = NetworkManager()
+        serviceManager.fetchJsonData("", completionHandler: { (dataResponse,error)  in
+            XCTAssertNil(dataResponse, "Service call didn't happened and returned nil data")
+        })
+        
+    }
+    
+    func testWrongURLServiceCall() {
+        let serviceManager: NetworkManager! = NetworkManager()
+        serviceManager.fetchJsonData("https://dl.dropboxusercontent.com/s/2iodh4vg0eortkl/fs.json", completionHandler: { (dataResponse,error)  in
+            XCTAssertNil(dataResponse, "Service call happened and returned nil data")
+        })
+        
+    }
+    
+    func testSuccessFullServiceCall() {
+        let serviceManager: NetworkManager! = NetworkManager()
+        serviceManager.fetchJsonData(kServiceURL, completionHandler: { (dataResponse,error)  in
+            if let factData = dataResponse {
+                XCTAssertEqual(factData.title, "About Canada", "Service call happened and returned correct data")
+            }
+        })
+    }
+    
     func testEmptyDataParsing() {
         let parser:ParseManager! = ParseManager()
         let emptyData = Data()
