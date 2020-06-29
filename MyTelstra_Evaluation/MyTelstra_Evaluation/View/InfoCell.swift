@@ -7,13 +7,12 @@
 //
 
 import UIKit
-import LazyImage
+import Alamofire
+import AlamofireImage
 class InfoCell: UITableViewCell {
-    lazy var lazyImage:LazyImage = LazyImage()
     var factContent:FactContent? {
         didSet {
             guard let contentItem = factContent else {return}
-            
             if let titleText = contentItem.title {
                 titleLabel.text = titleText
             } else {
@@ -28,16 +27,13 @@ class InfoCell: UITableViewCell {
             }
             
             detailsImageView.image = UIImage(named: "placeholder")
-            self.lazyImage.show(imageView: self.detailsImageView, url: contentItem.imageHref ?? "", completion: { (error:LazyImageError?) in//Imagedownload and show
-                if error != nil {//Any issue in downloading image will show placeholder
-                    self.detailsImageView.image = UIImage(named: "placeholder")
-                }
-            })
+            guard let imageURL = URL(string: contentItem.imageHref ?? "") else { return }
+            detailsImageView.af.setImage(withURL: imageURL,placeholderImage:UIImage(named: "placeholder"))
         }
     }
         
-    let detailsImageView:LazyImageView = {
-        let img = LazyImageView()
+    let detailsImageView:UIImageView = {
+        let img = UIImageView()
         img.contentMode = .scaleAspectFill // image will never be strecthed vertially or horizontally
         img.translatesAutoresizingMaskIntoConstraints = false // enable autolayout
         img.clipsToBounds = true
@@ -120,5 +116,12 @@ class InfoCell: UITableViewCell {
     
     required init?(coder aDecoder: NSCoder) {
         super.init(coder: aDecoder)
+    }
+    
+    override func prepareForReuse() {
+        super.prepareForReuse()
+
+        detailsImageView.af.cancelImageRequest()
+        detailsImageView.image = nil
     }
 }
