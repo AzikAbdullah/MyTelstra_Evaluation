@@ -7,6 +7,7 @@
 	objects = {
 
 /* Begin PBXBuildFile section */
+		03011C5324A9AED600F4B29C /* SceneDelegate.swift in Sources */ = {isa = PBXBuildFile; fileRef = 03011C5224A9AED600F4B29C /* SceneDelegate.swift */; };
 		03ADEF1524A784AC006D8804 /* AppDelegate.swift in Sources */ = {isa = PBXBuildFile; fileRef = 03ADEF1424A784AC006D8804 /* AppDelegate.swift */; };
 		03ADEF1924A784AC006D8804 /* ViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = 03ADEF1824A784AC006D8804 /* ViewController.swift */; };
 		03ADEF1C24A784AC006D8804 /* Main.storyboard in Resources */ = {isa = PBXBuildFile; fileRef = 03ADEF1A24A784AC006D8804 /* Main.storyboard */; };
@@ -17,7 +18,6 @@
 		03ADEF4A24A78806006D8804 /* InfoCell.swift in Sources */ = {isa = PBXBuildFile; fileRef = 03ADEF4924A78806006D8804 /* InfoCell.swift */; };
 		03ADEF4F24A78AF7006D8804 /* Facts.swift in Sources */ = {isa = PBXBuildFile; fileRef = 03ADEF4E24A78AF7006D8804 /* Facts.swift */; };
 		03ADEF5424A78C62006D8804 /* NetworkManager.swift in Sources */ = {isa = PBXBuildFile; fileRef = 03ADEF5324A78C62006D8804 /* NetworkManager.swift */; };
-		03ADEF5B24A79A44006D8804 /* SceneDelegate.swift in Sources */ = {isa = PBXBuildFile; fileRef = 03ADEF5A24A79A44006D8804 /* SceneDelegate.swift */; };
 		03C16B2524A8CA4800D66354 /* ParseManager.swift in Sources */ = {isa = PBXBuildFile; fileRef = 03C16B2424A8CA4800D66354 /* ParseManager.swift */; };
 		32723C5BF6D5E46468DDA044 /* Pods_MyTelstra_Evaluation_MyTelstra_EvaluationUITests.framework in Frameworks */ = {isa = PBXBuildFile; fileRef = 8F10889F3FB18240D324A3AA /* Pods_MyTelstra_Evaluation_MyTelstra_EvaluationUITests.framework */; };
 		32A5932951A797FB13D85DEF /* Pods_MyTelstra_Evaluation.framework in Frameworks */ = {isa = PBXBuildFile; fileRef = FF6A0D39DAE5733ADF92E6F0 /* Pods_MyTelstra_Evaluation.framework */; };
@@ -42,6 +42,7 @@
 /* End PBXContainerItemProxy section */
 
 /* Begin PBXFileReference section */
+		03011C5224A9AED600F4B29C /* SceneDelegate.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = SceneDelegate.swift; sourceTree = "<group>"; };
 		03ADEF1124A784AC006D8804 /* MyTelstra_Evaluation.app */ = {isa = PBXFileReference; explicitFileType = wrapper.application; includeInIndex = 0; path = MyTelstra_Evaluation.app; sourceTree = BUILT_PRODUCTS_DIR; };
 		03ADEF1424A784AC006D8804 /* AppDelegate.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = AppDelegate.swift; sourceTree = "<group>"; };
 		03ADEF1824A784AC006D8804 /* ViewController.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = ViewController.swift; sourceTree = "<group>"; };
@@ -58,7 +59,6 @@
 		03ADEF4924A78806006D8804 /* InfoCell.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = InfoCell.swift; sourceTree = "<group>"; };
 		03ADEF4E24A78AF7006D8804 /* Facts.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = Facts.swift; sourceTree = "<group>"; };
 		03ADEF5324A78C62006D8804 /* NetworkManager.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = NetworkManager.swift; sourceTree = "<group>"; };
-		03ADEF5A24A79A44006D8804 /* SceneDelegate.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = SceneDelegate.swift; sourceTree = "<group>"; };
 		03C16B2424A8CA4800D66354 /* ParseManager.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = ParseManager.swift; sourceTree = "<group>"; };
 		03C16B2F24A906D200D66354 /* .swiftlint.yml */ = {isa = PBXFileReference; lastKnownFileType = text.yaml; path = .swiftlint.yml; sourceTree = "<group>"; };
 		1272AEF7490360158884976A /* Pods-MyTelstra_EvaluationTests.debug.xcconfig */ = {isa = PBXFileReference; includeInIndex = 1; lastKnownFileType = text.xcconfig; name = "Pods-MyTelstra_EvaluationTests.debug.xcconfig"; path = "Target Support Files/Pods-MyTelstra_EvaluationTests/Pods-MyTelstra_EvaluationTests.debug.xcconfig"; sourceTree = "<group>"; };
@@ -161,7 +161,7 @@
 			isa = PBXGroup;
 			children = (
 				03ADEF1424A784AC006D8804 /* AppDelegate.swift */,
-				03ADEF5A24A79A44006D8804 /* SceneDelegate.swift */,
+				03011C5224A9AED600F4B29C /* SceneDelegate.swift */,
 			);
 			path = "App Delegate";
 			sourceTree = "<group>";
@@ -480,12 +480,12 @@
 			buildActionMask = 2147483647;
 			files = (
 				03C16B2524A8CA4800D66354 /* ParseManager.swift in Sources */,
+				03011C5324A9AED600F4B29C /* SceneDelegate.swift in Sources */,
 				03ADEF5424A78C62006D8804 /* NetworkManager.swift in Sources */,
 				03ADEF1924A784AC006D8804 /* ViewController.swift in Sources */,
 				03ADEF4F24A78AF7006D8804 /* Facts.swift in Sources */,
 				03ADEF1524A784AC006D8804 /* AppDelegate.swift in Sources */,
 				03ADEF4A24A78806006D8804 /* InfoCell.swift in Sources */,
-				03ADEF5B24A79A44006D8804 /* SceneDelegate.swift in Sources */,
 			);
 			runOnlyForDeploymentPostprocessing = 0;
 		};
@@ -662,6 +662,7 @@
 				CODE_SIGN_STYLE = Automatic;
 				DEVELOPMENT_TEAM = QSLL7565R4;
 				INFOPLIST_FILE = MyTelstra_Evaluation/Info.plist;
+				IPHONEOS_DEPLOYMENT_TARGET = 11.0;
 				LD_RUNPATH_SEARCH_PATHS = (
 					"$(inherited)",
 					"@executable_path/Frameworks",
@@ -681,6 +682,7 @@
 				CODE_SIGN_STYLE = Automatic;
 				DEVELOPMENT_TEAM = QSLL7565R4;
 				INFOPLIST_FILE = MyTelstra_Evaluation/Info.plist;
+				IPHONEOS_DEPLOYMENT_TARGET = 11.0;
 				LD_RUNPATH_SEARCH_PATHS = (
 					"$(inherited)",
 					"@executable_path/Frameworks",
