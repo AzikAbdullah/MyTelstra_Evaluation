@@ -13,6 +13,7 @@ class ViewController: UIViewController, UITableViewDataSource, UITableViewDelega
     let infoTableView = UITableView()
     var facts:Facts?
     var refreshControl = UIRefreshControl()
+    var networkManager = NetworkManager()
     override func viewDidLoad() {
         super.viewDidLoad()
         // Do any additional setup after loading the view.
@@ -42,7 +43,7 @@ class ViewController: UIViewController, UITableViewDataSource, UITableViewDelega
     }
     
     @objc func callService() {
-        NetworkManager().fetchJsonData(kServiceURL, completionHandler: { (responseData,error) in
+        networkManager.fetchJsonData(kServiceURL, completionHandler: { (responseData,error) in
             if let responseData = responseData, error == nil {
                 self.facts = responseData
                 DispatchQueue.main.async {//do UI changes in main queue

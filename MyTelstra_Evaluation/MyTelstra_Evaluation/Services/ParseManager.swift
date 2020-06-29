@@ -13,7 +13,7 @@ class ParseManager {
         guard let data = data else {return}
         do {
             if let response = String(data: data, encoding: String.Encoding.ascii),
-                let utfData = response.data(using: String.Encoding.utf8) {// Form valid json data to decode parsing
+                let utfData = response.data(using: String.Encoding.utf8) {// Form valid json data to do parsing
                 let parsedFacts:Facts =  try JSONDecoder().decode(Facts.self, from: utfData)
                 if error == nil {
                     completionHandler(parsedFacts, nil)
